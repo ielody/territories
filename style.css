@@ -1,0 +1,60 @@
+/* Norwegian flag inside the pin */
+#map {
+    height: 600px;
+}
+
+.flag {
+    width: 16px;
+    height: 11px;
+    background: #ba0c2f;
+    position: absolute;
+    top: 6px;
+    left: 4px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+/* White horizontal cross */
+.flag::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 4px;
+    background: white;
+    top: 3.5px;
+    left: 0;
+}
+
+/* White vertical cross */
+.flag::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 11px;
+    background: white;
+    top: 0;
+    left: 4px;
+}
+
+/* Blue horizontal cross */
+.blue-horizontal {
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: #00205b;
+    top: 4.5px;
+    left: 0;
+    z-index: 2;
+}
+
+/* Blue vertical cross */
+.blue-vertical {
+    position: absolute;
+    width: 2px;
+    height: 11px;
+    background: #00205b;
+    top: 0;
+    left: 5px;
+    z-index: 2;
+}
