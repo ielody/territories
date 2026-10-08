@@ -23,33 +23,34 @@ fetch('territories_polygons.geojson')
     .then(response => response.json())      
     .then(data => {
 
-L.geoJSON(data, {
-    style: {
-        fillColor: '#ffe37a',
-        fillOpacity: 0.7,
-        color: '#ffffff',
-        weight: 1
-    },
+        L.geoJSON(data, {
+            style: {
+                fillColor: '#D99A8C',
+                fillOpacity: 0.7,
+                color: '#ffffff',
+                weight: 1
+            },
 
-    
-    onEachFeature: function(feature, layer) {
-    
-    const point = feature.properties.label_point;
+            onEachFeature: function(feature, layer) {
 
-    L.marker([point[1], point[0]], {
-        icon: norwegianFlag
-    }).addTo(map);
-    
+                const point = feature.properties.label_point;
 
-        layer.bindPopup(
-        '<div class="popup-content">' +
-        '<h3>' + feature.properties.name_en + '</h3>' +
-        '<p><strong>Period:</strong> ' + feature.properties.period_text + '</p>' +
-        '<p>' + feature.properties.new_country + '</p>' +
-        '</div>'
-        
-    );
-}
-}).addTo(map);
+                const popupContent =
+                    '<div class="popup-content">' +
+                    '<h3>' + feature.properties.name_en + '</h3>' +
+                    '<p><strong>Period:</strong> ' + feature.properties.period_text + '</p>' +
+                    '<p>' + feature.properties.new_country + '</p>' +
+                    '</div>';
 
-});
+                L.marker([point[1], point[0]], {
+                    icon: norwegianFlag
+                })
+                .bindPopup(popupContent)
+                .addTo(map);
+
+                layer.bindPopup(popupContent);
+            }
+
+        }).addTo(map);
+
+    }); 
